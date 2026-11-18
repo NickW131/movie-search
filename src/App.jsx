@@ -15,14 +15,14 @@ export default function App() {
     const [searchTerm, setSearchTerm] = useState("Batman");
     const [watchlist, setWatchlist] = useState([]);
 
-    const API_KEY = "2bf11ce1";
+    const API_KEY = "PLACEHOLDER";
 
     const fetchMovies = async (query) => {
         // TODO 4: Set loading and clear errors
         setIsLoading(true);
         setError("");
 
-        if (!API_KEY) {
+        if (!API_KEY || API_KEY === "PLACEHOLDER") {
             setMovies([]);
             setError("No API key. Please enter your OMDb API key.");
             setIsLoading(false);
@@ -66,7 +66,7 @@ export default function App() {
 
     const addToWatchlist = (movie) => {
         setWatchlist((prevWatchlist) => {
-            
+
             const alreadyExists = prevWatchlist.some((item) => item.imdbID === movie.imdbID);
 
             if (alreadyExists) {
